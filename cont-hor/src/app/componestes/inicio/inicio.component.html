@@ -16,7 +16,7 @@
                         <p class="h5">{{dato.hora_fin}}</p>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row" *ngIf="actual.email==dato.usuario">
                     <div class="col" *ngIf="dato.estado == 'l'">
                         <button type="button" class="btn btn-success" (click)="iniciar_jornada(dato)">Iniciar</button>
                     </div>

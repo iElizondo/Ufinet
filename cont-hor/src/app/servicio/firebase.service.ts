@@ -8,6 +8,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from '@angular/fire/firestore';
 import { from, Observable } from 'rxjs';
 import { Info } from '../model/info';
+import { Usuario } from '../model/usuario';
 @Injectable({
   providedIn: 'root'
 })
@@ -26,6 +27,9 @@ export class FirebaseService {
   private infos: Observable<Info[]>;
   private infoDoc: AngularFirestoreDocument<Info>;
   private info: Observable<Info>;
+
+  
+  public actual: Usuario ={}
 
   private tabla: string = 'info';
   private campo: string = 'fecha';

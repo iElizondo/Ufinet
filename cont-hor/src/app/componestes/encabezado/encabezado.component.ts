@@ -21,14 +21,12 @@ export class EncabezadoComponent implements OnInit {
         this.usuario.email = user.email;
         this.usuario.urlFoto = user.photoURL;
       }else{
-        console.log("No esta logueado");
         this._router.navigate(['#']);
       }
     });   
    }
     
   ngOnInit() {
-    
   }
 
   salir(){

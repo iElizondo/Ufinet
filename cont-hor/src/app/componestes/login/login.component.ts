@@ -19,7 +19,10 @@ export class LoginComponent implements OnInit {
   info: Info = {
     usuario:'',
     fecha:'',
-    estado:''
+    hora_ini:'',
+    hora_fin:'',
+    estado:'',
+    id:''
   }
   public infos=[];
 
@@ -57,8 +60,11 @@ export class LoginComponent implements OnInit {
     var f = new Date();
     this.info.fecha = this.datePipe.transform(f, 'dd/MM/yyyy');
     this.info.estado = 'l';
+    this.info.hora_ini = '';
+    this.info.hora_fin = '';
+    this.info.id = '';
     this.buscar(this.info.fecha);
-    if(!(this.infos)){
+    if(this.infos.length != 0){
       this._fbService.agregarInfo(this.info);
     }
   }
@@ -66,7 +72,7 @@ export class LoginComponent implements OnInit {
   buscar(filtro){
     this._fbService.buscarInfos().subscribe(datos=>{
       datos.forEach(dato => {
-        if(dato.fecha == filtro){
+        if(dato.usuario == this.info.usuario && dato.fecha == filtro){
           this.infos.push(dato);
         }
       });
