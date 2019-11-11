@@ -1,3 +1,30 @@
-<p>
-  inicio works!
-</p>
+<app-encabezado></app-encabezado>
+
+<div class="container general">
+    <div class="row">
+        <div class="col-sm-12" *ngFor="let dato of infoFiltrada">
+            <div class="border fondo">
+                <p class="h3">{{dato.usuario}}</p>
+                <div class="row">
+                    <div class="col">
+                        <p class="h5">{{dato.fecha}}</p>
+                    </div>
+                    <div class="col" *ngIf="dato.hora_ini">
+                        <p class="h5">{{dato.hora_ini}}</p>
+                    </div>
+                    <div class="col" *ngIf="dato.hora_fin">
+                        <p class="h5">{{dato.hora_fin}}</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col" *ngIf="dato.estado == 'l'">
+                        <button type="button" class="btn btn-success" (click)="iniciar_jornada(dato)">Iniciar</button>
+                    </div>
+                    <div class="col" *ngIf="dato.estado == 'i'">
+                        <button type="button" class="btn btn-danger float-right" (click)="finalizar_jornada(dato)">Finalizar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
